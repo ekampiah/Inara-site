@@ -4,6 +4,7 @@ import { createTheme, MantineProvider, rem } from "@mantine/core";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HowItWorks from "./pages/HowItWorks.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
+import Plans from "./pages/Plans.tsx";
 
 const theme = createTheme({
   breakpoints: {
@@ -44,6 +45,7 @@ const MainContent = () => {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/plans" element={<Plans />} />
       </Route>
     </Routes>
   );

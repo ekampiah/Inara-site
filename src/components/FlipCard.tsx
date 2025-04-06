@@ -1,10 +1,10 @@
 import { Card, Group, Image, Title, Text } from "@mantine/core";
-import { useState } from "react";
+import { isValidElement, JSX, ReactNode, useState } from "react";
 
 interface CardState {
   imageSrc: string;
   caption: string;
-  detail: string;
+  detail: string | ReactNode;
 }
 
 export default function FlipCard({ imageSrc, caption, detail }: CardState) {
@@ -18,7 +18,7 @@ export default function FlipCard({ imageSrc, caption, detail }: CardState) {
         <div className="flip-card-front">
           <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>
-              <Image src={imageSrc} height={160} alt="Norway" />
+              <Image src={imageSrc} height={160} alt="card image" />
             </Card.Section>
 
             <Group justify="space-around" mt="md" mb="xs">
@@ -28,7 +28,7 @@ export default function FlipCard({ imageSrc, caption, detail }: CardState) {
         </div>
         <div className="flip-card-back h-full justify-center items-center flex">
           <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Text>{detail}</Text>
+            {isValidElement(detail) ? detail : <Text>{detail}</Text>}
           </Card>
         </div>
       </div>

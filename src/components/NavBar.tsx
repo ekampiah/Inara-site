@@ -1,13 +1,20 @@
 import { ActionIcon, Menu } from "@mantine/core";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
+import classNames from "classnames";
 
 export default function NavBar() {
   const location = useLocation();
-  console.log(location.pathname);
+  const links = [
+    { to: "/", label: "Home" },
+    { to: "/how-it-works", label: "How it works" },
+    { to: "/plans", label: "Plans" },
+    { to: "", label: "Events and Experiences" },
+    { to: "", label: "Join the Beta" },
+  ];
 
   return (
-    <nav className="flex flex-row justify-between items-center p-5">
+    <nav className="flex flex-row justify-between items-center mr-5">
       <div>
         <Link to="/" className="flex items-center">
           <img
@@ -17,19 +24,18 @@ export default function NavBar() {
           />
         </Link>
       </div>
-      <div className="hidden md:flex md:flex-row gap-5 ">
-        <Link to="/" className={location.pathname === "/" ? "active-link" : ""}>
-          Home
-        </Link>
-        <Link
-          to="/how-it-works"
-          className={location.pathname === "/how-it-works" ? "active-link" : ""}
-        >
-          How it works
-        </Link>
-        <Link to={""}>Features and Plans</Link>
-        <Link to={""}>Events and Experiences</Link>
-        <Link to={""}>Join the Beta</Link>
+      <div className="hidden md:flex md:flex-row">
+        {links.map((link) => (
+          <Link
+            key={link.label}
+            to={link.to}
+            className={classNames("px-5", {
+              "active-link": location.pathname === link.to,
+            })}
+          >
+            {link.label}
+          </Link>
+        ))}
       </div>
       <div className="md:hidden flex flex-row space-x-15">
         <Menu>
