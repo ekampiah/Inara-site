@@ -1,5 +1,5 @@
 import { Card, Group, Image, Title, Text } from "@mantine/core";
-import { isValidElement, JSX, ReactNode, useState } from "react";
+import { isValidElement, ReactNode, useState } from "react";
 
 interface CardState {
   imageSrc: string;
