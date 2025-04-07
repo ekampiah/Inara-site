@@ -1,6 +1,7 @@
 import { Title, Text, Button, Paper } from "@mantine/core";
 import FlipCard from "../components/FlipCard";
 import EventComponent from "../components/EventComponent";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -17,7 +18,12 @@ export default function Home() {
           Inara offers self-paced wellness plans, AI coaching, and real-life
           support designed for culturally rooted communities.
         </Text>
-        <Button size="md" style={{ width: "fit-content" }}>
+        <Button
+          size="md"
+          style={{ width: "fit-content" }}
+          component={Link}
+          to="/join-beta"
+        >
           Join the Beta!
         </Button>
       </section>
@@ -30,14 +36,11 @@ export default function Home() {
                 Inara is a wellness app designed to support your healing with
                 compassion, cultural awareness, and tech-powered coaching.
                 Whether you're deconstructing trauma, setting boundaries, or
-                finding peace, Inara walks with you.Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.
+                finding peace, Inara walks with you.We're not just another
+                wellness platform. Inara was built from the ground up to center
+                cultural context, emotional safety, and real human connection —
+                while still leveraging cutting-edge AI. That balance of tech and
+                tenderness is what sets us apart.
               </Text>
             </div>
           </Paper>
@@ -49,17 +52,17 @@ export default function Home() {
             <FlipCard
               imageSrc="./assets/male-meditation.png"
               caption="Culturally aware AI guidance"
-              detail="some detail"
+              detail="Most wellness platforms speak to a general audience. Inara speaks to people with specific lived experiences — whether you're navigating the weight of generational expectations, code-switching at work, or unlearning shame tied to your spirituality. We honor the intersection of identity, emotional wellbeing, and culture with content and AI messaging that reflects that."
             />
             <FlipCard
               imageSrc="./assets/flowing-mountain.png"
               caption="Self-paced mental health plans"
-              detail="some detail"
+              detail="Inara's AI isn't just about efficiency — it's about empathy. Our onboarding is designed to understand not just what you're going through, but who you are. From that, it generates a personalized 30-day wellness plan tailored to your emotional state, goals, and lifestyle — evolving with you over time."
             />
             <FlipCard
               imageSrc="./assets/male-coach.png"
               caption="Live support from trained coaches"
-              detail="some detail"
+              detail="We know that sometimes, wellness needs a voice you can feel. That's why we offer expert-led live workshops on topics like boundaries, self-worth, and grief. Real-time coaching sessions for deeper reflection. Reflection Calls that pair real-life insight with AI-supported progress. We're building a model where technology supports you, not replaces connection."
             />
           </div>
         </section>

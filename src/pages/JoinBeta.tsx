@@ -55,7 +55,8 @@ export default function JoinBeta() {
   return (
     <section id="join-beta" className="flex flex-col p-5 gap-1 w-full">
       <Title size="xl" className="text-center">
-        Be the first to <span className="text-[#EC9377]"> heal </span>with Inara
+        Be the first to <span className="text-[#EC9377]"> heal </span>with{" "}
+        <span className="text-[#EC9377]">Inara</span>
       </Title>
       <Text className="text-center">
         We're building something powerful — and personal. As a beta user, you'll

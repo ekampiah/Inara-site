@@ -1,17 +1,17 @@
-import { ActionIcon, Menu } from "@mantine/core";
+import { ActionIcon, Menu, NavLink } from "@mantine/core";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 
+export const SiteLinks = [
+  { to: "/", label: "Home" },
+  { to: "/how-it-works", label: "How it works" },
+  { to: "/plans", label: "Plans" },
+  // { to: "/events", label: "Events and Experiences" },
+  { to: "/join-beta", label: "Join the Beta" },
+];
 export default function NavBar() {
   const location = useLocation();
-  const links = [
-    { to: "/", label: "Home" },
-    { to: "/how-it-works", label: "How it works" },
-    { to: "/plans", label: "Plans" },
-    { to: "/events", label: "Events and Experiences" },
-    { to: "/join-beta", label: "Join the Beta" },
-  ];
 
   return (
     <nav className="flex flex-row justify-between items-center m-2">
@@ -25,7 +25,7 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="hidden md:flex md:flex-row">
-        {links.map((link) => (
+        {SiteLinks.map((link) => (
           <Link
             key={link.label}
             to={link.to}
@@ -45,11 +45,20 @@ export default function NavBar() {
             </ActionIcon>
           </Menu.Target>
           <Menu.Dropdown>
-            <Menu.Item>Home</Menu.Item>
-            <Menu.Item>How it works</Menu.Item>
-            <Menu.Item>Features and Plans</Menu.Item>
-            <Menu.Item>Events and Experiences</Menu.Item>
-            <Menu.Item>Join the Beta</Menu.Item>
+            {SiteLinks.map((link) => (
+              <Menu.Item
+                key={link.label}
+                className={classNames("px-5", {
+                  "mobile-active-link": location.pathname === link.to,
+                })}
+              >
+                <NavLink
+                  href={link.to}
+                  label={link.label}
+                  active={location.pathname === link.to}
+                />
+              </Menu.Item>
+            ))}
           </Menu.Dropdown>
         </Menu>
       </div>

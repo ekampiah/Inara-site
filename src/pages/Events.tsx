@@ -4,7 +4,7 @@ export default function Events() {
   return (
     <section
       id="plans"
-      className="flex flex-col p-5 gap-1 w-full text-center items-center"
+      className="flex flex-col p-5 gap-1 w-full h-full text-center items-center"
     >
       <Title size="xl" className="text-center">
         Where <span className="text-[#EC9377]"> healing </span>meets{" "}

@@ -4,9 +4,9 @@ import Footer from "../Footer";
 
 export default function MainLayout() {
   return (
-    <div className="flex flex-col bg-[url('/assets/double-lady-facing-right.png')] bg-cover bg-center h-screen">
+    <div className="flex flex-col bg-[url('/assets/double-lady-facing-right.png')] bg-cover bg-center min-h-screen">
       <NavBar />
-      <div className="h-full">
+      <div className="flex-grow">
         <Outlet />
       </div>
       <Footer />
