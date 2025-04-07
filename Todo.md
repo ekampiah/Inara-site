@@ -1,0 +1,4 @@
+- disable action button on how it works when unavailable eg. if current is 0, previous should be disabled
+- transition nav menu background
+- footer layout
+- plan cta (disable non-action)

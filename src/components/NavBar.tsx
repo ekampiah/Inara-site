@@ -10,11 +10,11 @@ export default function NavBar() {
     { to: "/how-it-works", label: "How it works" },
     { to: "/plans", label: "Plans" },
     { to: "/events", label: "Events and Experiences" },
-    { to: "", label: "Join the Beta" },
+    { to: "/join-beta", label: "Join the Beta" },
   ];
 
   return (
-    <nav className="flex flex-row justify-between items-center mr-5">
+    <nav className="flex flex-row justify-between items-center m-2">
       <div>
         <Link to="/" className="flex items-center">
           <img

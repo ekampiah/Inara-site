@@ -6,6 +6,7 @@ import HowItWorks from "./pages/HowItWorks.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
 import Plans from "./pages/Plans.tsx";
 import Events from "./pages/Events.tsx";
+import JoinBeta from "./pages/JoinBeta.tsx";
 
 const theme = createTheme({
   breakpoints: {
@@ -48,6 +49,7 @@ const MainContent = () => {
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/plans" element={<Plans />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/join-beta" element={<JoinBeta />} />
       </Route>
     </Routes>
   );
