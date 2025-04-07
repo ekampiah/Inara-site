@@ -10,6 +10,7 @@
 - fix why we're different details
 - subscribe action
 - general transitions
+- max width on xl screens
 
 external (for Kaz)
 

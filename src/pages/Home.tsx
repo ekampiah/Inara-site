@@ -67,7 +67,7 @@ export default function Home() {
           </div>
         </section>
       </section>
-      <section id="events" className="flex flex-col p-10 gap-5">
+      <section id="events" className="flex flex-col p-10 gap-5 items-center">
         <Title size="lg">Events</Title>
         <div className="flex flex-col md:flex-row gap-10 overflow-x-scroll">
           <EventComponent

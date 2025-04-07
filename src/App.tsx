@@ -15,7 +15,7 @@ const theme = createTheme({
     lg: "1024px",
     xl: "1280px",
   },
-  fontFamily: "Poppins, sans-serif",
+  fontFamily: "Nunito Sans, sans-serif",
   fontSizes: {
     xs: rem(9),
     sm: rem(12),
