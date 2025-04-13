@@ -6,3 +6,4 @@ external (for Kaz)
 - set up custom domain (inaraapp.ai)
 - if possible, variant of logo with white text
 - Google Forms links to use for partners and coaches CTA
+- Google sheets to export beta signup data

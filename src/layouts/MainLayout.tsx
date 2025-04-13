@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import Footer from "../Footer";
+import Footer from "../components/Footer";
 import { useEffect, useState, useCallback } from "react";
 
 export default function MainLayout() {
