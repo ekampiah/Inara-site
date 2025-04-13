@@ -1,4 +1,4 @@
-import { ActionIcon, Menu, NavLink } from "@mantine/core";
+import { ActionIcon, Menu, NavLink, Text } from "@mantine/core";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
@@ -8,6 +8,14 @@ export const SiteLinks = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/plans", label: "Plans" },
   // { to: "/events", label: "Events and Experiences" },
+  {
+    to: "/collaborate",
+    label: "Collaborate",
+    links: [
+      { to: "/coaches", label: "Coaches" },
+      { to: "/partners", label: "Partners" },
+    ],
+  },
   { to: "/join-beta", label: "Join the Beta" },
 ];
 export default function NavBar() {
@@ -25,17 +33,43 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="hidden md:flex md:flex-row">
-        {SiteLinks.map((link) => (
-          <Link
-            key={link.label}
-            to={link.to}
-            className={classNames("px-5", {
-              "active-link": location.pathname === link.to,
-            })}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {SiteLinks.map((link) =>
+          link.links ? (
+            <Menu key={link.label} trigger="hover">
+              <Menu.Target>
+                <div
+                  className={classNames("px-5", "cursor-pointer", {
+                    "active-link": location.pathname.includes(link.to),
+                  })}
+                >
+                  <Text>{link.label}</Text>
+                </div>
+              </Menu.Target>
+              <Menu.Dropdown>
+                {link.links.map((sublink) => (
+                  <Menu.Item key={sublink.label}>
+                    <NavLink
+                      key={sublink.label}
+                      href={`${link.to}${sublink.to}`}
+                      label={sublink.label}
+                      active={location.pathname.includes(sublink.to)}
+                    />
+                  </Menu.Item>
+                ))}
+              </Menu.Dropdown>
+            </Menu>
+          ) : (
+            <Link
+              key={link.label}
+              to={link.to}
+              className={classNames("px-5", {
+                "active-link": location.pathname === link.to,
+              })}
+            >
+              {link.label}
+            </Link>
+          )
+        )}
       </div>
       <div className="md:hidden flex flex-row space-x-15">
         <Menu>
@@ -46,12 +80,7 @@ export default function NavBar() {
           </Menu.Target>
           <Menu.Dropdown>
             {SiteLinks.map((link) => (
-              <Menu.Item
-                key={link.label}
-                className={classNames("px-5", {
-                  "mobile-active-link": location.pathname === link.to,
-                })}
-              >
+              <Menu.Item key={link.label}>
                 <NavLink
                   href={link.to}
                   label={link.label}

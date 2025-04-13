@@ -7,9 +7,12 @@ import {
   Button,
   List,
   ThemeIcon,
+  MultiSelect,
 } from "@mantine/core";
+import CulturalIdentities from "../data/cultural-identities.json";
+import WellnessGoals from "../data/wellness-goals.json";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { RiStarSLine } from "react-icons/ri";
 
 enum AgeRange {
@@ -24,8 +27,8 @@ interface FormFields {
   name: string;
   email: string;
   age: AgeRange;
-  identity: string;
-  goals: string;
+  culturalIdentity: string;
+  goals: string[];
   consent: boolean;
 }
 
@@ -34,8 +37,8 @@ export default function JoinBeta() {
     name: "",
     email: "",
     age: AgeRange.Below24,
-    identity: "",
-    goals: "",
+    culturalIdentity: "",
+    goals: [],
     consent: false,
   };
 
@@ -43,10 +46,25 @@ export default function JoinBeta() {
   const {
     register,
     handleSubmit,
+    setValue,
+    trigger,
+    control,
     formState: { errors },
   } = useForm<FormFields>({
     defaultValues: initialFormState,
   });
+
+  const culturalIdentityOptions = CulturalIdentities.map(
+    ({ value, label }) => ({
+      value,
+      label,
+    })
+  );
+
+  const goalsOptions = WellnessGoals.map(({ value, label }) => ({
+    value,
+    label,
+  }));
 
   const handleSubmitForm = (data: FormFields) => {
     console.log(data);
@@ -86,9 +104,11 @@ export default function JoinBeta() {
           {...register("name", { required: "Name is required" })}
           label="Name"
           value={data?.name || ""}
-          onChange={(event) =>
-            setData({ ...data, name: event.currentTarget.value })
-          }
+          onChange={(event) => {
+            setData({ ...data, name: event.currentTarget.value });
+            setValue("name", event.currentTarget.value);
+            trigger("name");
+          }}
           error={errors.name?.message}
         />
         <TextInput
@@ -96,12 +116,13 @@ export default function JoinBeta() {
           label="Email"
           value={data?.email || ""}
           type="email"
-          onChange={(event) =>
-            setData({ ...data, email: event.currentTarget.value })
-          }
+          onChange={(event) => {
+            setData({ ...data, email: event.currentTarget.value });
+            setValue("email", event.currentTarget.value);
+            trigger("email");
+          }}
           error={errors.email?.message}
         />
-
         <Select
           {...register("age", {
             required: "Age is required",
@@ -112,9 +133,53 @@ export default function JoinBeta() {
             label,
           }))}
           placeholder="Select your age range"
-          onChange={(value) => setData({ ...data, age: value as AgeRange })}
+          onChange={(value) => {
+            setData({ ...data, age: value as AgeRange });
+            setValue("age", value as AgeRange);
+            trigger("age");
+          }}
           value={data.age || ""}
           error={errors.age?.message}
+        />
+        <Select
+          {...register("culturalIdentity", {
+            required: "Cultural identity is required",
+          })}
+          label="Cultural Identity"
+          data={culturalIdentityOptions.map(({ value, label }) => ({
+            value,
+            label,
+          }))}
+          placeholder="Select your cultural identity"
+          onChange={(value) => {
+            setData({ ...data, culturalIdentity: value as string });
+            setValue("culturalIdentity", value as string);
+            trigger("culturalIdentity");
+          }}
+          value={data.culturalIdentity || ""}
+          error={errors.culturalIdentity?.message}
+        />
+        <Controller
+          name="goals"
+          control={control}
+          rules={{ required: "Wellness goals is required" }}
+          render={({ field }) => (
+            <MultiSelect
+              label="Wellness Goals (up to 3)"
+              data={goalsOptions.map(({ value, label }) => ({
+                value,
+                label,
+              }))}
+              placeholder="Select your wellness goals"
+              onChange={(value: string[]) => {
+                if (value.length > 3) return;
+                field.onChange(value);
+                setData({ ...data, goals: value });
+              }}
+              value={field.value}
+              error={errors.goals?.message}
+            />
+          )}
         />
         <Checkbox
           {...register("consent", {
@@ -122,9 +187,11 @@ export default function JoinBeta() {
           })}
           label="I'm open to providing feedback after using Inara"
           checked={data.consent}
-          onChange={(event) =>
-            setData({ ...data, consent: event.currentTarget.checked })
-          }
+          onChange={(event) => {
+            setData({ ...data, consent: event.currentTarget.checked });
+            setValue("consent", event.currentTarget.checked);
+            trigger("consent");
+          }}
           error={errors.consent?.message}
         />
         <Button type="submit" className="bg-[#EC9377]">

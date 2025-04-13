@@ -1,0 +1,17 @@
+[
+  { "value": "boundaries", "label": "Setting Healthy Boundaries" },
+  { "value": "self_worth", "label": "Improving Self-Worth" },
+  { "value": "anxiety", "label": "Managing Anxiety" },
+  { "value": "burnout", "label": "Recovering from Burnout" },
+  { "value": "stress", "label": "Reducing Stress" },
+  { "value": "confidence", "label": "Building Confidence" },
+  { "value": "relationships", "label": "Improving Relationships" },
+  { "value": "sleep", "label": "Enhancing Sleep Quality" },
+  { "value": "mindfulness", "label": "Practicing Mindfulness" },
+  { "value": "emotional_regulation", "label": "Emotional Regulation" },
+  { "value": "work_life_balance", "label": "Achieving Work-Life Balance" },
+  { "value": "grief", "label": "Processing Grief or Loss" },
+  { "value": "self_love", "label": "Cultivating Self-Love" },
+  { "value": "depression", "label": "Managing Depression" },
+  { "value": "motivation", "label": "Boosting Motivation" }
+]

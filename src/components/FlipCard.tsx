@@ -10,10 +10,7 @@ interface CardState {
 export default function FlipCard({ imageSrc, caption, detail }: CardState) {
   const [flipped, setFlipped] = useState<boolean>();
   return (
-    <div
-      className="flip-card w-[250px] h-[300px] cursor-pointer"
-      onClick={() => setFlipped(!flipped)}
-    >
+    <div className="flip-card" onClick={() => setFlipped(!flipped)}>
       <div className={`flip-card-inner ${flipped ? "rotate" : ""}`}>
         <div className="flip-card-front">
           <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -26,9 +23,13 @@ export default function FlipCard({ imageSrc, caption, detail }: CardState) {
             </Group>
           </Card>
         </div>
-        <div className="flip-card-back h-full justify-center items-center flex">
+        <div className="flip-card-back h-full justify-center items-center flex overflow-y-auto">
           <Card shadow="sm" padding="lg" radius="md" withBorder>
-            {isValidElement(detail) ? detail : <Text>{detail}</Text>}
+            {isValidElement(detail) ? (
+              detail
+            ) : (
+              <Text style={{ paddingTop: "2rem" }}>{detail}</Text>
+            )}
           </Card>
         </div>
       </div>

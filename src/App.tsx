@@ -7,6 +7,9 @@ import MainLayout from "./layouts/MainLayout.tsx";
 import Plans from "./pages/Plans.tsx";
 import Events from "./pages/Events.tsx";
 import JoinBeta from "./pages/JoinBeta.tsx";
+import Coaches from "./pages/Coaches.tsx";
+import Partners from "./pages/Partners.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 
 const theme = createTheme({
   breakpoints: {
@@ -51,6 +54,10 @@ const MainContent = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/join-beta" element={<JoinBeta />} />
       </Route>
+      <Route path="/collaborate" element={<MainLayout />}>
+        <Route path="/collaborate/coaches" element={<Coaches />} />
+        <Route path="/collaborate/partners" element={<Partners />} />
+      </Route>
     </Routes>
   );
 };
@@ -58,6 +65,7 @@ const MainContent = () => {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <MantineProvider theme={theme}>
         <MainContent />
       </MantineProvider>

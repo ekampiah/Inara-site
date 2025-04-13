@@ -1,0 +1,70 @@
+[
+  {
+    "value": "african",
+    "label": "African"
+  },
+  {
+    "value": "african_american",
+    "label": "African American / Black"
+  },
+  {
+    "value": "arab_middle_eastern",
+    "label": "Arab / Middle Eastern / North African"
+  },
+  {
+    "value": "asian",
+    "label": "Asian"
+  },
+  {
+    "value": "caribbean",
+    "label": "Caribbean"
+  },
+  {
+    "value": "central_asian",
+    "label": "Central Asian"
+  },
+  {
+    "value": "east_asian",
+    "label": "East Asian (e.g., Chinese, Japanese, Korean)"
+  },
+  {
+    "value": "european",
+    "label": "European"
+  },
+  {
+    "value": "hispanic_latin",
+    "label": "Hispanic / Latin American"
+  },
+  {
+    "value": "indigenous",
+    "label": "Indigenous / First Nations / Native Peoples"
+  },
+  {
+    "value": "jewish",
+    "label": "Jewish"
+  },
+  {
+    "value": "pacific_islander",
+    "label": "Pacific Islander / Native Hawaiian"
+  },
+  {
+    "value": "south_asian",
+    "label": "South Asian (e.g., Indian, Pakistani, Bangladeshi)"
+  },
+  {
+    "value": "southeast_asian",
+    "label": "Southeast Asian (e.g., Filipino, Vietnamese, Thai)"
+  },
+  {
+    "value": "multiracial",
+    "label": "Mixed Heritage / Multiracial"
+  },
+  {
+    "value": "prefer_not_to_say",
+    "label": "Prefer not to say"
+  },
+  {
+    "value": "other",
+    "label": "Other (please specify)"
+  }
+]

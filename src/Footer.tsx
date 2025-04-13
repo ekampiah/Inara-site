@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="bottom-0 w-full bg-[#9f300e] p-5 text-white text-center flex flex-col gap-5">
+    <div className="bottom-0 w-full bg-[#9f300e] p-5 text-white flex flex-col gap-5">
       <section className="flex flex-row justify-between">
         <div className="flex flex-col text-center items-center gap-5">
           <Link to="/" className="flex items-center">
@@ -35,13 +35,36 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <List>
+          <List listStyleType="disc">
             {SiteLinks.map((link) => (
-              <List.Item>
-                <Link key={link.label} to={link.to} className="hover:underline">
-                  {link.label}
-                </Link>
-              </List.Item>
+              <div>
+                {link.links ? (
+                  <div className="flex flex-col gap-2">
+                    <List.Item>
+                      {link.label}
+                      <List listStyleType="disc">
+                        {link.links.map((sublink) => (
+                          <List.Item key={sublink.label}>
+                            <Link
+                              key={sublink.label}
+                              to={`${link.to}${sublink.to}`}
+                              className="text-white"
+                            >
+                              {sublink.label}
+                            </Link>
+                          </List.Item>
+                        ))}
+                      </List>
+                    </List.Item>
+                  </div>
+                ) : (
+                  <List.Item>
+                    <Link key={link.label} to={link.to} className="text-white">
+                      {link.label}
+                    </Link>
+                  </List.Item>
+                )}
+              </div>
             ))}
           </List>
         </div>
@@ -62,10 +85,12 @@ export default function Footer() {
           </Button>
         </form>
       </section>
-      <Text>
-        Inara is where your healing begins — rooted in your culture, supported
-        by tech, held by community.
-      </Text>
+      <div className="flex flex-col gap-5 items-center">
+        <Text>
+          Inara is where your healing begins — rooted in your culture, supported
+          by tech, held by community.
+        </Text>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,75 @@
-import { Title, Text, Button, Paper } from "@mantine/core";
+import {
+  Title,
+  Text,
+  Button,
+  Paper,
+  Stack,
+  Image,
+  ThemeIcon,
+  Divider,
+} from "@mantine/core";
 import FlipCard from "../components/FlipCard";
 import EventComponent from "../components/EventComponent";
 import { Link } from "react-router-dom";
+import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
+
+interface ComparisonCard {
+  feature: string;
+  inara: boolean;
+  calm: boolean;
+  betterHelp: boolean;
+}
+
+const ComparisonGrid: ComparisonCard[] = [
+  {
+    feature: "HIPAA Compliant",
+    inara: true,
+    calm: true,
+    betterHelp: true,
+  },
+  {
+    feature: "AI-Powered Personalized Healing Plans",
+    inara: true,
+    calm: false,
+    betterHelp: false,
+  },
+  {
+    feature: "Real-Time Cultural Context Coaching",
+    inara: true,
+    calm: false,
+    betterHelp: false,
+  },
+  {
+    feature: "Optional Faith-Based Prompts",
+    inara: true,
+    calm: false,
+    betterHelp: false,
+  },
+  {
+    feature: "Built for Culturally Rooted Wellness",
+    inara: true,
+    calm: false,
+    betterHelp: false,
+  },
+  {
+    feature: "Hybrid Support (AI + Human)",
+    inara: true,
+    calm: false,
+    betterHelp: true,
+  },
+  {
+    feature: "Monthly Reflection Calls",
+    inara: true,
+    calm: false,
+    betterHelp: false,
+  },
+  {
+    feature: "Live Expert Workshops",
+    inara: true,
+    calm: false,
+    betterHelp: true,
+  },
+];
 
 export default function Home() {
   return (
@@ -86,6 +154,73 @@ export default function Home() {
             location="Minneapolis"
           />
         </div>
+      </section>
+      <section
+        id="comparison"
+        className="flex flex-col p-10 gap-5 items-center"
+      >
+        <Title>Compare Inara with current offerings</Title>
+        <Stack>
+          <div className="grid grid-cols-4 gap-5">
+            <div className="flex justify-center">
+              <div />
+            </div>
+            <div className="flex items-center justify-center">
+              <Image
+                src="./assets/logo.png"
+                alt="Inara Logo"
+                className="h-15 w-auto"
+              />
+            </div>
+            <div className="flex items-center justify-center">
+              <Image
+                src="./assets/calm-logo.png"
+                alt="Calm Logo"
+                className="h-5 w-auto"
+              />
+            </div>
+            <div className="flex items-center justify-center">
+              <Image
+                fit="contain"
+                src="./assets/betterhelp-logo.png"
+                alt="BetterHelp Logo"
+                className="h-5 w-auto"
+              />
+            </div>
+          </div>
+          {ComparisonGrid.map((card, index) => (
+            <div key={card.feature}>
+              <div className="grid grid-cols-4 gap-5 p-3">
+                <div>{card.feature}</div>
+                <div className="flex justify-center">
+                  <ThemeIcon
+                    radius="xl"
+                    variant={`${card.inara ? "" : "outline"}`}
+                  >
+                    {card.inara ? <BsCheck2Circle /> : <BsXCircle />}
+                  </ThemeIcon>
+                </div>
+                <div className="flex justify-center">
+                  <ThemeIcon
+                    variant={`${card.calm ? "" : "outline"}`}
+                    radius="xl"
+                  >
+                    {card.calm ? <BsCheck2Circle /> : <BsXCircle />}
+                  </ThemeIcon>
+                </div>
+                <div className="flex justify-center">
+                  <ThemeIcon
+                    variant={`${card.betterHelp ? "" : "outline"}`}
+                    radius="xl"
+                  >
+                    {card.betterHelp ? <BsCheck2Circle /> : <BsXCircle />}
+                  </ThemeIcon>
+                </div>
+              </div>
+              {index < ComparisonGrid.length - 1 && <Divider />}
+            </div>
+          ))}
+        </Stack>
       </section>
     </section>
   );

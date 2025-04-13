@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export default function HowItWorks() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState<number>(0);
   const nextStep = () =>
     setActive((current) => (current < 4 ? current + 1 : current));
   const prevStep = () =>
@@ -58,6 +58,7 @@ export default function HowItWorks() {
             aria-label="Previous step"
             radius="xl"
             onClick={prevStep}
+            disabled={active === 0}
           >
             <IoIosArrowBack />
           </ActionIcon>
@@ -66,6 +67,7 @@ export default function HowItWorks() {
             aria-label="Next step"
             radius="xl"
             onClick={nextStep}
+            disabled={active === 4}
           >
             <IoIosArrowForward />
           </ActionIcon>
