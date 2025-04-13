@@ -1,4 +1,5 @@
-import { Button, List, Text, Title } from "@mantine/core";
+import { Button, List, Text, ThemeIcon, Title } from "@mantine/core";
+import { RiStarSLine } from "react-icons/ri";
 
 export default function Partners() {
   return (
@@ -22,7 +23,14 @@ export default function Partners() {
           personalized mental health support — not just access to a hotline?
         </Title>
         <Text>Inara is a culturally rooted wellness app that offers: </Text>
-        <List listStyleType="disc">
+        <List
+          icon={
+            <ThemeIcon size="sm" radius="xl">
+              <RiStarSLine />
+            </ThemeIcon>
+          }
+          className="flex flex-col gap-3"
+        >
           <List.Item>
             AI-generated mental health plans tailored to each user's cultural
             identity, goals, and emotional needs
@@ -67,7 +75,14 @@ export default function Partners() {
           </Text>
         </div>
         <Title size="lg">Why does it all matter?</Title>
-        <List listStyleType="disc">
+        <List
+          icon={
+            <ThemeIcon size="sm" radius="xl">
+              <RiStarSLine />
+            </ThemeIcon>
+          }
+          className="flex flex-col gap-3"
+        >
           <List.Item>
             70% of culturally rooted communities report not feeling seen in
             traditional mental health tools

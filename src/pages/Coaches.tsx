@@ -1,4 +1,5 @@
-import { Button, List, Text, Title } from "@mantine/core";
+import { Button, List, Text, ThemeIcon, Title } from "@mantine/core";
+import { RiStarSLine } from "react-icons/ri";
 
 export default function Coaches() {
   return (
@@ -25,7 +26,14 @@ export default function Coaches() {
           intelligent wellness.
         </Text>
         <Title size="md">As a Premium Coach, you can:</Title>
-        <List listStyleType="disc">
+        <List
+          icon={
+            <ThemeIcon size="sm" radius="xl">
+              <RiStarSLine />
+            </ThemeIcon>
+          }
+          className="flex flex-col gap-3"
+        >
           <List.Item>Offer 1:1 paid coaching sessions within the app</List.Item>
           <List.Item>
             Lead specialized group healing containers and challenges
@@ -60,7 +68,14 @@ export default function Coaches() {
           our In-House Coaching Track.
         </Text>
         <Title size="md">This is a guided opportunity to:</Title>
-        <List listStyleType="disc">
+        <List
+          icon={
+            <ThemeIcon size="sm" radius="xl">
+              <RiStarSLine />
+            </ThemeIcon>
+          }
+          className="flex flex-col gap-3"
+        >
           <List.Item>Support users through 1:1 Reflection Calls</List.Item>
           <List.Item>
             Receive feedback, mentorship, and templates from our lead wellness
@@ -75,7 +90,14 @@ export default function Coaches() {
           </List.Item>
         </List>
         <Title size="md">This is ideal for:</Title>
-        <List listStyleType="disc">
+        <List
+          icon={
+            <ThemeIcon size="sm" radius="xl">
+              <RiStarSLine />
+            </ThemeIcon>
+          }
+          className="flex flex-col gap-3"
+        >
           <List.Item>
             Aspiring life coaches, peer supporters, therapists-in-training, or
             spiritual workers

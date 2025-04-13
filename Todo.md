@@ -1,6 +1,3 @@
-- transition nav menu background
-- general transitions
-
 external (for Kaz)
 
 - events list on homepage
