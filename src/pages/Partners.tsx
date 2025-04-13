@@ -10,11 +10,13 @@ export default function Partners() {
       >
         <Title size="xl" className="text-center">
           <span className="text-[#EC9377]">Culturally</span> Rooted Mental
-          Wellness
+          <span className="text-[#EC9377]"> Wellness</span>
         </Title>
         <Title size="lg">
-          Built for <span className="text-[#EC9377]">Community</span>, Scaled
-          for <span className="text-[#EC9377]">Impact</span>
+          Built for <span className="text-[#EC9377]">Community</span>
+        </Title>
+        <Title size="lg">
+          Scaled for <span className="text-[#EC9377]">Impact</span>
         </Title>
       </section>
       <section className="flex flex-col gap-5">
