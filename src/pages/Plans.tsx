@@ -55,7 +55,7 @@ export default function Plans() {
       <Title size="xl" className="text-center">
         Designed for where <span className="text-[#EC9377]"> You </span>are
       </Title>
-      <div className="flex flex-col gap-20 p-10">
+      <div className="flex flex-col md:flex-row gap-20 p-10">
         {plans.map((plan) => (
           <FlipCard
             key={plan.caption}

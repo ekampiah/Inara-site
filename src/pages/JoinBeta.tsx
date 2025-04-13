@@ -48,11 +48,13 @@ export default function JoinBeta() {
     handleSubmit,
     setValue,
     trigger,
+    reset,
     control,
     formState: { errors },
   } = useForm<FormFields>({
     defaultValues: initialFormState,
   });
+  const [submitting, setSubmitting] = useState(false);
 
   const culturalIdentityOptions = CulturalIdentities.map(
     ({ value, label }) => ({
@@ -66,8 +68,29 @@ export default function JoinBeta() {
     label,
   }));
 
-  const handleSubmitForm = (data: FormFields) => {
-    console.log(data);
+  const handleSubmitForm = () => {
+    const action =
+      "https://script.google.com/macros/s/AKfycbynNHtNCH43H4L6nDWW4pKgyfJci7loJiCkx5yV2G7nXRTq5uJ6AlO4rTEaSUB_zLPP/exec";
+    const form = document.getElementById("signup-form");
+
+    if (!form) return;
+    setSubmitting(true);
+    fetch(action, {
+      method: "POST",
+      body: new FormData(form as HTMLFormElement),
+    })
+      .then(() => {
+        alert("We have received your submission! We'll be in touch soon.");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Error submitting the form. Please try again later.");
+      })
+      .finally(() => {
+        setSubmitting(false);
+        setData(initialFormState);
+        reset();
+      });
   };
 
   return (
@@ -97,12 +120,14 @@ export default function JoinBeta() {
         </List>
       </section>
       <form
+        id="signup-form"
         onSubmit={handleSubmit(handleSubmitForm)}
-        className="flex flex-col gap-5 md:w-[70%] w-full mx-auto"
+        className="flex flex-col gap-5 md:w-[70%] w-full mx-auto m-10"
       >
         <TextInput
           {...register("name", { required: "Name is required" })}
           label="Name"
+          name="Name"
           value={data?.name || ""}
           onChange={(event) => {
             setData({ ...data, name: event.currentTarget.value });
@@ -114,6 +139,7 @@ export default function JoinBeta() {
         <TextInput
           {...register("email", { required: "Email is required" })}
           label="Email"
+          name="Email"
           value={data?.email || ""}
           type="email"
           onChange={(event) => {
@@ -128,6 +154,7 @@ export default function JoinBeta() {
             required: "Age is required",
           })}
           label="Age"
+          name="Age"
           data={Object.entries(AgeRange).map(([value, label]) => ({
             value,
             label,
@@ -146,6 +173,7 @@ export default function JoinBeta() {
             required: "Cultural identity is required",
           })}
           label="Cultural Identity"
+          name="Cultural Identity"
           data={culturalIdentityOptions.map(({ value, label }) => ({
             value,
             label,
@@ -166,6 +194,7 @@ export default function JoinBeta() {
           render={({ field }) => (
             <MultiSelect
               label="Wellness Goals (up to 3)"
+              name="Wellness Goals"
               data={goalsOptions.map(({ value, label }) => ({
                 value,
                 label,
@@ -194,8 +223,8 @@ export default function JoinBeta() {
           }}
           error={errors.consent?.message}
         />
-        <Button type="submit" className="bg-[#EC9377]">
-          Join the Beta
+        <Button type="submit" className="bg-[#EC9377]" disabled={submitting}>
+          {submitting ? "Submitting..." : "Join the Beta"}
         </Button>
       </form>
     </section>

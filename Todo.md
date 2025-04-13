@@ -1,5 +1,4 @@
 - transition nav menu background
-- subscribe action (sign up should populate google sheets)
 - general transitions
 
 external (for Kaz)
@@ -9,3 +8,4 @@ external (for Kaz)
 - social links
 - set up custom domain (inaraapp.ai)
 - if possible, variant of logo with white text
+- Google Forms links to use for partners and coaches CTA
