@@ -4,7 +4,11 @@ import { FaXTwitter } from "react-icons/fa6";
 import { SiteLinks } from "./components/NavBar";
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+export default function Footer({
+  onNavigate,
+}: {
+  onNavigate: (to: string, e?: React.MouseEvent) => void;
+}) {
   return (
     <div className="bottom-0 w-full bg-[#9f300e] p-5 text-white flex flex-col gap-5">
       <section className="flex flex-row justify-between">
@@ -47,6 +51,9 @@ export default function Footer() {
                           <List.Item key={sublink.label}>
                             <Link
                               key={sublink.label}
+                              onClick={(e) =>
+                                onNavigate(`${link.to}${sublink.to}`, e)
+                              }
                               to={`${link.to}${sublink.to}`}
                               className="text-white"
                             >
@@ -59,7 +66,12 @@ export default function Footer() {
                   </div>
                 ) : (
                   <List.Item>
-                    <Link key={link.label} to={link.to} className="text-white">
+                    <Link
+                      key={link.label}
+                      to={link.to}
+                      onClick={(e) => onNavigate(link.to, e)}
+                      className="text-white"
+                    >
                       {link.label}
                     </Link>
                   </List.Item>

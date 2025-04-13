@@ -2,6 +2,7 @@ import { ActionIcon, Menu, NavLink, Text } from "@mantine/core";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
+import React from "react";
 
 export const SiteLinks = [
   { to: "/", label: "Home" },
@@ -18,13 +19,21 @@ export const SiteLinks = [
   },
   { to: "/join-beta", label: "Join the Beta" },
 ];
-export default function NavBar() {
+export default function NavBar({
+  onNavigate,
+}: {
+  onNavigate: (to: string, e?: React.MouseEvent) => void;
+}) {
   const location = useLocation();
 
   return (
     <nav className="flex flex-row justify-between items-center m-2">
       <div>
-        <Link to="/" className="flex items-center">
+        <Link
+          to="/"
+          onClick={(e) => onNavigate("/", e)}
+          className="flex items-center"
+        >
           <img
             src="./assets/logo.png"
             alt="Inara Logo"
@@ -35,12 +44,23 @@ export default function NavBar() {
       <div className="hidden md:flex md:flex-row">
         {SiteLinks.map((link) =>
           link.links ? (
-            <Menu key={link.label} trigger="hover">
+            <Menu
+              key={link.label}
+              trigger="hover"
+              transitionProps={{
+                transition: "fade",
+                duration: 300,
+                timingFunction: "ease",
+              }}
+            >
               <Menu.Target>
                 <div
-                  className={classNames("px-5", "cursor-pointer", {
-                    "active-link": location.pathname.includes(link.to),
-                  })}
+                  className={classNames(
+                    "px-5 cursor-pointer hover:underline underline-offset-10 hover:text-[#EC9377]",
+                    {
+                      "active-link": location.pathname.includes(link.to),
+                    }
+                  )}
                 >
                   <Text>{link.label}</Text>
                 </div>
@@ -51,6 +71,7 @@ export default function NavBar() {
                     <NavLink
                       key={sublink.label}
                       href={`${link.to}${sublink.to}`}
+                      onClick={(e) => onNavigate(`${link.to}${sublink.to}`, e)}
                       label={sublink.label}
                       active={location.pathname.includes(sublink.to)}
                     />
@@ -62,9 +83,13 @@ export default function NavBar() {
             <Link
               key={link.label}
               to={link.to}
-              className={classNames("px-5", {
-                "active-link": location.pathname === link.to,
-              })}
+              onClick={(e) => onNavigate(link.to, e)}
+              className={classNames(
+                "px-5 hover:underline underline-offset-10 hover:text-[#EC9377] transition-all duration-300",
+                {
+                  "active-link": location.pathname === link.to,
+                }
+              )}
             >
               {link.label}
             </Link>
@@ -80,13 +105,37 @@ export default function NavBar() {
           </Menu.Target>
           <Menu.Dropdown>
             {SiteLinks.map((link) => (
-              <Menu.Item key={link.label}>
-                <NavLink
-                  href={link.to}
-                  label={link.label}
-                  active={location.pathname === link.to}
-                />
-              </Menu.Item>
+              <React.Fragment key={link.label}>
+                {link.links ? (
+                  <>
+                    <Menu.Label className="font-bold text-[#EC9377]">
+                      {link.label}
+                    </Menu.Label>
+                    {link.links.map((sublink) => (
+                      <Menu.Item key={sublink.label} className="pl-4">
+                        <NavLink
+                          href={`${link.to}${sublink.to}`}
+                          onClick={(e) =>
+                            onNavigate(`${link.to}${sublink.to}`, e)
+                          }
+                          label={sublink.label}
+                          active={location.pathname.includes(sublink.to)}
+                        />
+                      </Menu.Item>
+                    ))}
+                    <Menu.Divider />
+                  </>
+                ) : (
+                  <Menu.Item key={link.label}>
+                    <NavLink
+                      href={link.to}
+                      label={link.label}
+                      onClick={(e) => onNavigate(link.to, e)}
+                      active={location.pathname === link.to}
+                    />
+                  </Menu.Item>
+                )}
+              </React.Fragment>
             ))}
           </Menu.Dropdown>
         </Menu>

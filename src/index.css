@@ -2,10 +2,9 @@
 
 .active-link {
   font-weight: bold;
-  color: white;
-  border-radius: 2rem;
-  background-color: #9f300e;
+  color: #ec9377;
   align-items: center;
+  text-decoration: underline;
 }
 
 .flip-card {
@@ -50,4 +49,24 @@
 
 .flip-card-inner.rotate {
   transform: rotateY(180deg);
+}
+
+/* Transitions */
+button:active {
+  transform: scale(0.98);
+}
+
+.flip-card {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.flip-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
