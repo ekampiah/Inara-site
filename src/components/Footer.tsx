@@ -42,7 +42,7 @@ export default function Footer({
           <div className="flex flex-col gap-5 items-center">
             <List listStyleType="disc">
               {SiteLinks.map((link) => (
-                <div>
+                <div key={link.label}>
                   {link.links ? (
                     <div className="flex flex-col gap-2">
                       <List.Item>
