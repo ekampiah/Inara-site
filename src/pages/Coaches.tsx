@@ -1,5 +1,6 @@
 import { Button, List, Text, ThemeIcon, Title } from "@mantine/core";
 import { RiStarSLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export default function Coaches() {
   return (
@@ -53,7 +54,12 @@ export default function Coaches() {
           This is more than a listing — it's an aligned ecosystem built with
           soul.
         </Text>
-        <Button style={{ width: "fit-content" }}>
+        <Button
+          style={{ width: "fit-content" }}
+          component={Link}
+          to="https://docs.google.com/forms/d/14lWbudRbl1CBhJxvQPHsKqw7Qrd_mkNEFt1m8ThXi44/viewform?edit_requested=true"
+          target="_blank"
+        >
           Apply to Become a Premium Coach
         </Button>
       </section>

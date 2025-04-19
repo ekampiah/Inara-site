@@ -40,7 +40,7 @@ export default function MainLayout() {
   );
 
   return (
-    <div className="flex flex-col bg-[url('/assets/double-lady-facing-right.png')] bg-cover bg-center min-h-screen">
+    <div className="flex flex-col bg-[url('/assets/images/double-lady-facing-right.png')] bg-cover bg-center min-h-screen">
       <NavBar onNavigate={handleLinkClick} />
       <div
         className={`flex-grow xl:max-w-[80%] xl:mx-auto transition-opacity duration-300 ${

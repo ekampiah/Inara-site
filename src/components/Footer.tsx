@@ -16,7 +16,7 @@ export default function Footer({
           <div className="flex flex-col text-center items-center gap-5">
             <Link to="/" className="flex items-center">
               <img
-                src="./assets/logo.png"
+                src="./assets/images/logo.png"
                 alt="Inara Logo"
                 className="h-15 w-auto"
               />

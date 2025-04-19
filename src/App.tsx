@@ -53,10 +53,10 @@ const MainContent = () => {
         <Route path="/plans" element={<Plans />} />
         <Route path="/events" element={<Events />} />
         <Route path="/join-beta" element={<JoinBeta />} />
-      </Route>
-      <Route path="/collaborate" element={<MainLayout />}>
-        <Route path="/collaborate/coaches" element={<Coaches />} />
-        <Route path="/collaborate/partners" element={<Partners />} />
+        <Route path="/collaborate">
+          <Route path="/collaborate/coaches" element={<Coaches />} />
+          <Route path="/collaborate/partners" element={<Partners />} />
+        </Route>
       </Route>
     </Routes>
   );

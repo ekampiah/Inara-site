@@ -12,7 +12,7 @@ export default function Plans() {
   const plans: PlanDetails[] = [
     {
       caption: "Free",
-      imageSrc: "./assets/faint-red-sun.png",
+      imageSrc: "./assets/images/faint-red-sun.png",
       bulletPoints: [
         "Free to use",
         "1 mini plan per quarter",
@@ -24,7 +24,7 @@ export default function Plans() {
     },
     {
       caption: "Starter - $4.99/month",
-      imageSrc: "./assets/natty-lady.png",
+      imageSrc: "./assets/images/natty-lady.png",
       bulletPoints: [
         "Full access to all plans",
         "8 AI prompts/month",
@@ -35,7 +35,7 @@ export default function Plans() {
     },
     {
       caption: "Premium - $9.99/month or $69.99/year",
-      imageSrc: "./assets/premium.png",
+      imageSrc: "./assets/images/premium.png",
       bulletPoints: [
         "Unlimited access to all features",
         "Monthly group therapy sessions",

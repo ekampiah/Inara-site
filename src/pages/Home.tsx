@@ -118,17 +118,17 @@ export default function Home() {
           <Title size="sm">click each card for more info...</Title>
           <div className="flex flex-col md:flex-row gap-5 justify-between">
             <FlipCard
-              imageSrc="./assets/male-meditation.png"
+              imageSrc="./assets/images/male-meditation.png"
               caption="Culturally aware AI guidance"
               detail="Most wellness platforms speak to a general audience. Inara speaks to people with specific lived experiences — whether you're navigating the weight of generational expectations, code-switching at work, or unlearning shame tied to your spirituality. We honor the intersection of identity, emotional wellbeing, and culture with content and AI messaging that reflects that."
             />
             <FlipCard
-              imageSrc="./assets/flowing-mountain.png"
+              imageSrc="./assets/images/flowing-mountain.png"
               caption="Self-paced mental health plans"
               detail="Inara's AI isn't just about efficiency — it's about empathy. Our onboarding is designed to understand not just what you're going through, but who you are. From that, it generates a personalized 30-day wellness plan tailored to your emotional state, goals, and lifestyle — evolving with you over time."
             />
             <FlipCard
-              imageSrc="./assets/male-coach.png"
+              imageSrc="./assets/images/male-coach.png"
               caption="Live support from trained coaches"
               detail="We know that sometimes, wellness needs a voice you can feel. That's why we offer expert-led live workshops on topics like boundaries, self-worth, and grief. Real-time coaching sessions for deeper reflection. Reflection Calls that pair real-life insight with AI-supported progress. We're building a model where technology supports you, not replaces connection."
             />
@@ -139,19 +139,31 @@ export default function Home() {
         <Title size="lg">Events</Title>
         <div className="flex flex-col md:flex-row gap-10 overflow-x-scroll">
           <EventComponent
-            title="Bloom & Brunch"
-            date="May 4, 2025"
-            location="Minneapolis"
+            title="Pilates & Brunch"
+            date="February 2025"
+            location="Los Angeles"
+            description={[
+              "We were honored to partner with Rich Aunties Society for a soulful Pilates & Brunch event in Los Angeles. This unique gathering offered a beautiful fusion of movement, tech-assisted healing, and sisterhood. While future events continue under the Rich Aunties brand, this one-time collaboration showed the power of blending AI and intention in real life.",
+            ]}
+            moreText="View the gallery"
+            moreUrl="/events/#pnb-la"
+            highlights={[
+              "Mat Pilates led by a certified instructor",
+              "Guided journaling & breathwork by Inara",
+              "AI-powered healing reflections",
+              "Brunch and community conversation",
+            ]}
           />
           <EventComponent
             title="Bloom & Brunch"
             date="May 4, 2025"
             location="Minneapolis"
-          />
-          <EventComponent
-            title="Bloom & Brunch"
-            date="May 4, 2025"
-            location="Minneapolis"
+            description={[
+              "Step into a sacred space designed to nourish your mind, body, and spirit. Bloom & Brunch is Inara's signature wellness event—an immersive experience rooted in emotional healing, financial alignment, and communal joy.",
+              "Set in a serene garden atmosphere, this gathering invites you to slow down and reconnect with the version of yourself that's ready to bloom. Through intentional workshops, grounding rituals, and curated luxury, you'll walk away feeling clear, centered, and seen.",
+            ]}
+            moreText="Buy tickets"
+            moreUrl="https://www.eventbrite.com/e/inara-wellness-experience-tickets-1099602413419"
           />
         </div>
       </section>
@@ -159,7 +171,9 @@ export default function Home() {
         id="comparison"
         className="flex flex-col p-10 gap-5 items-center"
       >
-        <Title>Compare Inara with current offerings</Title>
+        <Title>
+          <span className="text-[#EC9377]">Inara</span> vs other apps
+        </Title>
         <Stack>
           <div className="grid grid-cols-4 gap-5">
             <div className="flex justify-center">
@@ -167,14 +181,14 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center">
               <Image
-                src="./assets/logo.png"
+                src="./assets/images/logo.png"
                 alt="Inara Logo"
                 className="h-15 w-auto"
               />
             </div>
             <div className="flex items-center justify-center">
               <Image
-                src="./assets/calm-logo.png"
+                src="./assets/images/calm-logo.png"
                 alt="Calm Logo"
                 className="h-5 w-auto"
               />
@@ -182,7 +196,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <Image
                 fit="contain"
-                src="./assets/betterhelp-logo.png"
+                src="./assets/images/betterhelp-logo.png"
                 alt="BetterHelp Logo"
                 className="h-5 w-auto"
               />

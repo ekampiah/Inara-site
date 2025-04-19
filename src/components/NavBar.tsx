@@ -8,7 +8,7 @@ export const SiteLinks = [
   { to: "/", label: "Home" },
   { to: "/how-it-works", label: "How it works" },
   { to: "/plans", label: "Plans" },
-  // { to: "/events", label: "Events and Experiences" },
+  { to: "/events", label: "Events and Experiences" },
   {
     to: "/collaborate",
     label: "Collaborate",
@@ -35,7 +35,7 @@ export default function NavBar({
           className="flex items-center"
         >
           <img
-            src="./assets/logo.png"
+            src="./assets/images/logo.png"
             alt="Inara Logo"
             className="h-15 w-auto"
           />

@@ -1,5 +1,6 @@
 import { Button, List, Text, ThemeIcon, Title } from "@mantine/core";
 import { RiStarSLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export default function Partners() {
   return (
@@ -101,7 +102,14 @@ export default function Partners() {
       </section>
       <section className="flex flex-col gap-5 w-fit">
         <Title size="lg">Ready to partner with us?</Title>
-        <Button>Download the Inara B2B Partner Kit</Button>
+        <Button
+          component={Link}
+          to="/assets/docs/b2b.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download the Inara B2B Partner Kit
+        </Button>
         <Button>Book a discovery call with our founders</Button>
         <Button>Sign up to pilot Inara with Your community</Button>
       </section>
