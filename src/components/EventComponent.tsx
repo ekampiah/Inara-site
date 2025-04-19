@@ -1,6 +1,7 @@
-import { Paper, Title, Button, List } from "@mantine/core";
+import { Paper, Title, Button, List, Badge } from "@mantine/core";
 import { IoCalendarOutline, IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { isPast, parse } from "date-fns";
 
 interface EventDetails {
   title: string;
@@ -21,13 +22,23 @@ export default function EventComponent({
   moreUrl,
   moreText,
 }: EventDetails) {
+  const parsedDate = parse(date, "MM-dd-yyyy", new Date());
+  const isPastEvent = isPast(parsedDate);
+
   return (
     <Paper
       p="md"
       radius="xl"
       bg="rgba(255, 255, 255, 0.6)"
-      className="w-full flex flex-col md:flex-row justify-center text-center max-h-[400px] overflow-y-auto"
+      className="w-full relative flex flex-col md:flex-row justify-center text-center max-h-[400px] overflow-y-auto"
     >
+      {isPastEvent && (
+        <div className="absolute -top-[-1] -left-[-1] z-10">
+          <Badge variant="filled" radius="xl" size="sm" color="#EC9377">
+            Past
+          </Badge>
+        </div>
+      )}
       <section id="event-basics">
         <Title size="md"> {title}</Title>
         <div className="flex flex-row gap-4 justify-center items-center">

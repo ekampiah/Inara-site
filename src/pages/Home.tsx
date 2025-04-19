@@ -140,7 +140,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row gap-10 overflow-x-scroll">
           <EventComponent
             title="Pilates & Brunch"
-            date="February 2025"
+            date="02-23-2025"
             location="Los Angeles"
             description={[
               "We were honored to partner with Rich Aunties Society for a soulful Pilates & Brunch event in Los Angeles. This unique gathering offered a beautiful fusion of movement, tech-assisted healing, and sisterhood. While future events continue under the Rich Aunties brand, this one-time collaboration showed the power of blending AI and intention in real life.",
@@ -156,7 +156,7 @@ export default function Home() {
           />
           <EventComponent
             title="Bloom & Brunch"
-            date="May 4, 2025"
+            date="05-04-2025"
             location="Minneapolis"
             description={[
               "Step into a sacred space designed to nourish your mind, body, and spirit. Bloom & Brunch is Inara's signature wellness event—an immersive experience rooted in emotional healing, financial alignment, and communal joy.",
