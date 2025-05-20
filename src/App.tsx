@@ -1,7 +1,7 @@
 import Home from "./pages/Home.tsx";
 import "@mantine/core/styles.css";
 import { createTheme, MantineProvider, rem } from "@mantine/core";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import HowItWorks from "./pages/HowItWorks.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
 import Plans from "./pages/Plans.tsx";
@@ -10,6 +10,8 @@ import JoinBeta from "./pages/JoinBeta.tsx";
 import Coaches from "./pages/Coaches.tsx";
 import Partners from "./pages/Partners.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 const theme = createTheme({
   breakpoints: {
@@ -44,6 +46,17 @@ const theme = createTheme({
   primaryShade: 8,
 });
 
+function AnalyticsListener({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname + location.search,
+    });
+  }, [location]);
+  return <>{children}</>;
+}
+
 const MainContent = () => {
   return (
     <Routes>
@@ -65,10 +78,12 @@ const MainContent = () => {
 export default function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <MantineProvider theme={theme}>
-        <MainContent />
-      </MantineProvider>
+      <AnalyticsListener>
+        <ScrollToTop />
+        <MantineProvider theme={theme}>
+          <MainContent />
+        </MantineProvider>
+      </AnalyticsListener>
     </BrowserRouter>
   );
 }
