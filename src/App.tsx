@@ -12,6 +12,7 @@ import Partners from "./pages/Partners.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
+import EventDetails from "./pages/EventDetails";
 
 const theme = createTheme({
   breakpoints: {
@@ -64,7 +65,10 @@ const MainContent = () => {
         <Route index element={<Home />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/plans" element={<Plans />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/events">
+          <Route index element={<Events />} />
+          <Route path="/events/:id" element={<EventDetails />} />
+        </Route>
         <Route path="/join-beta" element={<JoinBeta />} />
         <Route path="/collaborate">
           <Route path="/collaborate/coaches" element={<Coaches />} />
